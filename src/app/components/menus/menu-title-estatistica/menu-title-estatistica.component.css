@@ -1,0 +1,49 @@
+.container_menu_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 20px 15px 4px;
+  
+  background-color: #F0601F;
+}
+
+.title_label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  flex: 1; 
+}
+
+img{
+  padding: 2px;
+  background-color: #ee8d61;
+  border-radius: 8px;
+  margin-left: 30px;
+  width: 100px;
+  
+}
+
+.title {
+  margin: 0px 9px 0px ;
+  font-size: 76px;
+  font-family: 'Dosis', serif;
+  font-weight: 700;
+  color: #003192;
+  
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #dabe9de1;
+}
+
+h2{
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Dosis', serif;
+    background-color: #F0601F;
+    color: #ffff;
+    padding-top: 15px;
+    padding-bottom: 15px
+}

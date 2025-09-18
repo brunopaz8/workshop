@@ -1,0 +1,48 @@
+<app-menu-title-estatistica></app-menu-title-estatistica>
+
+<div class="workshop-detail-wrapper">
+
+  <div class="workshop-detail-page" *ngIf="workshop">
+      
+      <div class="workshop_card">
+
+            <h2>{{ workshop.nome }}</h2>
+            <p><strong>Data:</strong> {{ workshop.dataRealizacao | date:'dd/MM/yyyy' }}</p>
+            <p><strong>Descrição:</strong> {{ workshop.descricao }}</p>
+            <p><strong>Total de inscritos:</strong> {{ totalInscritos }}</p>
+
+            <h3>Participação dos Colaboradores:</h3>
+            <div class="participation-bar">
+                <div class="bar presente" [style.width.%]="(totalPresentes / totalInscritos) * 100">
+                {{ totalPresentes }} presentes
+                </div>
+                <div class="bar ausente" [style.width.%]="(totalAusentes / totalInscritos) * 100">
+                {{ totalAusentes }} ausentes
+                </div>
+            </div>
+
+            <hr>
+
+          <h3 class="lista">Lista de Colaboradores</h3>
+          <span *ngIf="totalInscritos === 0 ">
+                nenhum colaborador inscrito
+            </span>
+          <ul>
+              <li *ngFor="let colab of workshop.colaboradores">
+              {{ colab.nome }} - 
+              <span [ngClass]="{'presente': colab.presente, 'ausente': !colab.presente}">
+                  {{ colab.presente ? 'Presente' : 'Ausente' }}
+              </span>
+              </li>
+          </ul>
+          <a routerLink="">voltar</a>
+      </div>
+      
+  </div>
+
+  <div *ngIf="!workshop">
+    <p>Workshop não encontrado.</p>
+  </div>
+</div>
+
+<app-menu-footer></app-menu-footer>

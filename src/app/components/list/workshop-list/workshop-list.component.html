@@ -1,0 +1,65 @@
+<div class="workshop_page">
+  <div class="workshop-list">
+
+    <div class="search-bar">
+      <input 
+        type="text" 
+        placeholder="Pesquisar workshop..." 
+        [(ngModel)]="termoPesquisa"
+        (input)="pesquisarWorkshops()"
+      />
+    </div>
+
+    <li class="label_workshop" *ngFor="let workshop of workshops">
+
+      <div class="title_card" (click)="verDetalhes(workshop)">
+        
+        <div>
+
+          <h3>{{ workshop.nome }}</h3>
+          <p><strong>Data:</strong> {{ workshop.dataRealizacao | date:'dd/MM/yyyy' }}</p>
+          <p *ngIf="selectedWorkshop?.id !== workshop.id">
+            {{ workshop.descricao | slice:0:30 }}...
+          </p>
+          <p *ngIf="selectedWorkshop?.id === workshop.id">
+            {{ workshop.descricao }}
+          </p>
+          
+        </div>
+        
+        <button [routerLink]="['/workshops', workshop.id, 'graficos']">
+            Estatisticas 
+        </button>
+
+      </div>
+
+      <div *ngIf="selectedWorkshop?.id === workshop.id" class="detalhes">
+
+        <h3>Colaboradores inscritos:</h3>
+        <span *ngIf="workshop.colaboradores?.length === 0">
+          Nenhum colaborador inscrito.
+        </span>
+
+        <ul>
+
+          <li *ngFor="let colab of workshop.colaboradores">
+
+            {{ colab.nome }}
+            <span [ngClass]="{'presente': colab.presente, 'ausente': !colab.presente}">
+              {{ colab.presente ? 'Presente' : 'Ausente' }}
+            </span>
+            <button (click)="atualizarPresenca(workshop.id, colab.id)">
+              Alterar presença
+            </button>
+            
+          </li>
+
+        </ul>
+
+      </div>
+
+    </li>
+
+  </div>
+  
+</div>

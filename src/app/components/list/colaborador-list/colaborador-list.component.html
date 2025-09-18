@@ -1,0 +1,52 @@
+<div class="colaborador_page">
+
+  <div class="colaborador_list">
+
+    <div class="search-bar">
+
+      <input 
+        type="text" 
+        placeholder="Pesquisar colaborador..." 
+        [(ngModel)]="termoPesquisa"
+        (input)="pesquisarColaboradores()"
+      />
+
+    </div>
+
+    <div class="colaborador_card" *ngFor="let colab of colaboradores">
+      
+      <div class="title_card" (click)="verDetalhes(colab)">
+
+        <div class="card-header">
+
+          <div class="card-info">
+
+            <h3>{{ colab.nome }}</h3>
+            <p><strong>ID:</strong> {{ colab.id }}</p>
+          </div>
+          <button (click)="excluirColaborador(colab.id); $event.stopPropagation()" class="btn-excluir">
+            Excluir
+          </button>
+
+        </div>
+
+      </div>
+
+      <div *ngIf="selectedColaborador?.id === colab.id" class="detalhes">
+
+        <h3>Workshops inscritos:</h3>
+        <p *ngIf="colab.workshops?.length === 0">Nenhum workshop inscrito.</p>
+        
+        <div *ngFor="let w of colab.workshops" class="workshop-item">
+
+          <strong>{{ w.nome }}</strong> - {{ w.dataRealizacao | date:'dd/MM/yyyy' }}
+          <p>{{ w.descricao | slice:0:50 }}...</p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  
+</div>
