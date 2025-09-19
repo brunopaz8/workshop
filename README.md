@@ -29,7 +29,7 @@ A aplicação consome dados de uma **API RESTful** (desenvolvida em .NET) que pe
 
 ## 📸 Vídeo de Demonstração
 
-> todo: vídeo do site funcionando
+[Assista no Youtube!](https://youtu.be/jDCtyIz4XzA)
 
 ---
 

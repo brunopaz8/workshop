@@ -21,7 +21,7 @@
           <p *ngIf="selectedWorkshop?.id !== workshop.id">
             {{ workshop.descricao | slice:0:30 }}...
           </p>
-          <p *ngIf="selectedWorkshop?.id === workshop.id">
+          <p *ngIf="selectedWorkshop?.id === workshop.id" class="descricao_expandida">
             {{ workshop.descricao }}
           </p>
           

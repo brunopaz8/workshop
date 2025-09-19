@@ -62,6 +62,10 @@
     font-size: 24px;
 }
 
+.title_card .descricao_expandida{
+    max-width: 680px;
+}
+
 .title_card button{
     margin-top: 0;                      
     padding: 8px 16px;
